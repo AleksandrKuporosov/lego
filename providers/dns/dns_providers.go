@@ -3,6 +3,7 @@ package dns
 import (
 	"fmt"
 
+	"github.com/AleksandrKuporosov/lego/providers/dns/yandex"
 	"github.com/xenolf/lego/acme"
 	"github.com/xenolf/lego/providers/dns/acmedns"
 	"github.com/xenolf/lego/providers/dns/alidns"
@@ -134,6 +135,8 @@ func NewDNSChallengeProviderByName(name string) (acme.ChallengeProvider, error) 
 		return vegadns.NewDNSProvider()
 	case "vultr":
 		return vultr.NewDNSProvider()
+	case "yandex":
+		return yandex.NewDNSProvider()
 	default:
 		return nil, fmt.Errorf("unrecognised DNS provider: %s", name)
 	}
